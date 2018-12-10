@@ -1,4 +1,11 @@
 # Autospotting configuration
+variable "autospotting_name" {
+  description = <<EOF
+A unique name for the instance of autospotting.  Allows multiple autospotters to exist in one aws account.
+EOF
+  default = "autospotting"
+}
+
 variable "asg_allowed_instance_types" {
   description = <<EOF
     Comma separated list of allowed instance types for spot requests,

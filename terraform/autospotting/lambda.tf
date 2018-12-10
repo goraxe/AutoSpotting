@@ -27,14 +27,14 @@ module "aws_lambda_function" {
 }
 
 resource "aws_iam_role" "autospotting_role" {
-  name                  = "autospotting"
+  name                  = "${var.autospotting_name}"
   path                  = "/lambda/"
   assume_role_policy    = "${file("${path.module}/lambda-policy.json")}"
   force_detach_policies = true
 }
 
 resource "aws_iam_role_policy" "autospotting_policy" {
-  name   = "policy_for_autospotting"
+  name   = "policy_for${var.autospotting_name}"
   role   = "${aws_iam_role.autospotting_role.id}"
   policy = "${file("${path.module}/autospotting-policy.json")}"
 }
@@ -54,7 +54,7 @@ resource "aws_cloudwatch_event_target" "cloudwatch_target" {
 }
 
 resource "aws_cloudwatch_event_rule" "cloudwatch_frequency" {
-  name                = "autospotting_frequency"
+  name                = "${var.autospotting_name}_frequency"
   schedule_expression = "${var.lambda_run_frequency}"
 }
 

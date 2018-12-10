@@ -1,4 +1,12 @@
 # Autospotting configuration
+variable "autospotting_name" {
+  description = <<EOF
+A unique name for the autospotting lambda
+EOF
+
+  default = "autospotting"
+}
+
 variable "autospotting_allowed_instance_types" {
   description = <<EOF
 Comma separated list of allowed instance types for spot requests,
