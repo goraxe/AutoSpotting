@@ -138,3 +138,8 @@ variable "lambda_tags" {
     Name = "autospotting"
   }
 }
+
+variable "region" {
+  description = "AWS region to deploy lambda"
+  default = "us-east-1"
+}
