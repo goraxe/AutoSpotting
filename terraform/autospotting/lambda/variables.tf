@@ -15,6 +15,10 @@ variable "lambda_runtime" {}
 variable "lambda_timeout" {}
 variable "lambda_memory_size" {}
 
+variable "lambda_name" {
+  default = "autospotting"
+}
+
 variable "autospotting_allowed_instance_types" {}
 variable "autospotting_disallowed_instance_types" {}
 variable "autospotting_min_on_demand_number" {}

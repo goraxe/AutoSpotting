@@ -2,6 +2,7 @@ module "aws_lambda_function" {
   source = "./lambda"
 
   lambda_zipname = "${var.lambda_zipname}"
+  lambda_name    = "${var.autospotting_name}"
 
   lambda_s3_bucket = "${var.lambda_s3_bucket}"
   lambda_s3_key    = "${var.lambda_s3_key}"
