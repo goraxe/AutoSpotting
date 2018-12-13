@@ -81,7 +81,7 @@ variable "asg_tag_filters" {
     spot-enabled=true,Environment=dev,Team=vision
   EOF
 
-  default = ""
+  default = "chassis-spot-enabled=true"
 }
 
 variable "asg_tag_filtering_mode" {
