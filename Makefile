@@ -17,7 +17,7 @@ ifneq ($(FLAVOR), custom)
     LICENSE_FILES += BINARY_LICENSE
 endif
 
-LDFLAGS="-X main.Version=$(FLAVOR)-$(BUILD) -s -w"
+LDFLAGS="-X main.Version=$(FLAVOR)-$(BUILD) -s -w -extldflags '-static'"
 
 all: fmt-check vet-check build test                          ## Build the code
 .PHONY: all
@@ -46,7 +46,7 @@ update_deps:												 ## Update all dependencies
 .PHONY: update_deps
 
 build: build_deps                                            ## Build autospotting binary
-	GOOS=linux go build -ldflags=$(LDFLAGS) -o $(BINARY)
+	CGO_ENABLED=0 GOOS=linux go build -ldflags=$(LDFLAGS) -o $(BINARY)
 .PHONY: build
 
 archive: build                                               ## Create archive to be uploaded
